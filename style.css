@@ -1,0 +1,90 @@
+ @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
+* {
+  font-family: 'Oswald', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  background: #333;
+}
+
+.browser-block {
+  margin-top: 5px;
+}
+
+.nav {
+  font-size: 0;
+}
+
+.nav > * {
+  font-size: 1.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #62e;
+  color: #2ae;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: 700;
+  height: 100%;
+  width: 50%;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.nav > *:hover {
+  background: #51d;
+  color: #3bf;
+}
+
+.browser-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.browser-block > * {
+  background-color: #d99;
+  padding: 0;
+}
+
+.browser-block > *:not(.browser-list),
+.browser-element a {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 2px 4px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.browser-block > *:not(.browser-list):hover:before,
+.browser-element a:hover:before {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.file {;
+  background-color: #dd9;
+}
+
+.dir {
+  background-color: #9dd;
+}
