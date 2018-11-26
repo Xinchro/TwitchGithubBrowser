@@ -1,23 +1,38 @@
 var twitch = window.Twitch.ext;
 
 var user = "Xinchro"
-var repo = "wf-drops-back"
+var repo = "TwitchGithubBrowser"
 var repoURL = "//github.com/"+user+"/"+repo+"/"
 var URL = "//api.github.com/repos/"+user+"/"+repo+"/contents/"
 var dirs = []
 
-document.getElementById("user").href = "//github.com/"+user
-document.getElementById("repo").href = "//github.com/"+user+"/"+repo
-Array.from(document.getElementsByClassName("nav-item")).forEach(function(ele) {ele.target="_blank"})
-
-window.Twitch.ext.rig.log("getting repo")
-browseNext(false, '')
-
-window.Twitch.ext.rig.log(twitch.configutation)
-window.Twitch.ext.rig.log(twitch.onAuthorized(authenticated))
+twitch.onAuthorized(authenticated)
+twitch.configuration.onChanged(loadData)
 
 function authenticated(auth) {
-  window.Twitch.ext.rig.log("authing", auth.channelId, auth.clientId, auth.token, auth.userId)
+  
+}
+
+function loadData() {
+  setVars(twitch.configuration)
+  browseNext(false, '')
+}
+
+function setVars(data) {
+  console.log(data)
+  try {
+    var broadcaster = JSON.parse(data.broadcaster.content)
+    console.log(broadcaster)
+  } catch(e) {
+    var broadcaster = { username: "error", repo: "error" }
+  }
+
+  repoURL = "//github.com/"+broadcaster.user+"/"+broadcaster.repo+"/"
+  URL = "//api.github.com/repos/"+broadcaster.user+"/"+broadcaster.repo+"/contents/"
+
+  document.getElementById("user").href = "//github.com/"+user
+  document.getElementById("repo").href = "//github.com/"+user+"/"+repo
+  Array.from(document.getElementsByClassName("nav-item")).forEach(function(ele) {ele.target="_blank"})
 }
 
 function goBack() {
@@ -29,7 +44,7 @@ function browseNext(event, newDir) {
   if(event) event.preventDefault()
   
   if(newDir !== '') dirs.push(newDir)
-  window.Twitch.ext.rig.log("browsing", dirs)
+  console.log("browsing", dirs)
   
   var xhttp = new XMLHttpRequest()
   xhttp.open("GET", URL + dirs.join('/'), false);
