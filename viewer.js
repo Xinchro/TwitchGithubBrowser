@@ -10,8 +10,15 @@ document.getElementById("user").href = "//github.com/"+user
 document.getElementById("repo").href = "//github.com/"+user+"/"+repo
 Array.from(document.getElementsByClassName("nav-item")).forEach(function(ele) {ele.target="_blank"})
 
-console.log("getting repo")
+window.Twitch.ext.rig.log("getting repo")
 browseNext(false, '')
+
+window.Twitch.ext.rig.log(twitch.configutation)
+window.Twitch.ext.rig.log(twitch.onAuthorized(authenticated))
+
+function authenticated(auth) {
+  window.Twitch.ext.rig.log("authing", auth.channelId, auth.clientId, auth.token, auth.userId)
+}
 
 function goBack() {
   dirs.pop()
@@ -22,7 +29,7 @@ function browseNext(event, newDir) {
   if(event) event.preventDefault()
   
   if(newDir !== '') dirs.push(newDir)
-  console.log("browsing", dirs)
+  window.Twitch.ext.rig.log("browsing", dirs)
   
   var xhttp = new XMLHttpRequest()
   xhttp.open("GET", URL + dirs.join('/'), false);
