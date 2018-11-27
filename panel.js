@@ -66,11 +66,11 @@ function browseNext(event, newDir) {
   browserList.innerHTML = ''
   for(var i=0;i<data.length;i++) {
     if(data[i].type.toLowerCase() === 'file') {
-      browserList.innerHTML += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '">' + data[i].name + "</a></li>"
+      browserList.innerHTML += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '"><div class="icon">&#x1f517;</div>' + data[i].name + "</a></li>"
     }
 
     if(data[i].type.toLowerCase() === 'dir') {
-      browserList.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn">&gt;&nbsp;' + data[i].name + '</button></li>'
+      browserList.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn"><div class="icon">&#x1f4c2;</div>' + data[i].name + '</button></li>'
       console.log("getting", data[i].name + '-btn')
 
       setTimeout(function(name){

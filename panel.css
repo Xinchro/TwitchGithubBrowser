@@ -73,6 +73,25 @@ body {
 }
 
 .browser-block > *:not(.browser-list):hover,
+.browser-element:hover {
+  height: 50px;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.browser-block > *:not(.browser-list) .icon,
+.browser-element a .icon,
+.browser-element button .icon {
+  display: none;
+}
+
+.browser-block > *:not(.browser-list):hover .icon,
+.browser-element a:hover .icon,
+.browser-element button:hover .icon {
+  display: inline-block;
+}
+
+.browser-block > *:not(.browser-list):hover,
 .browser-element a:hover,
 .browser-element button:hover {
   padding-left: 15px;
