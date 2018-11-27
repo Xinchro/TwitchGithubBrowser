@@ -16,7 +16,7 @@ function loadData() {
 
 function applyChanges() {
   console.log("applying")
-  twitch.configuration.set('broadcaster', '0.1', JSON.stringify({ user: username.value, repo: repo.value }))
+  twitch.configuration.set('broadcaster', '0.1', JSON.stringify({ user: removeSpaces(username.value), repo: removeSpaces(repo.value) }))
 }
 
 document.getElementById('apply-btn').addEventListener('click', function() {
@@ -31,6 +31,6 @@ function updateInputs(data) {
   } catch(e) {
     var broadcaster = { username: "error", repo: "error" }
   }
-  username.value = broadcaster.user
-  repo.value = broadcaster.repo
+  username.value = removeSpaces(broadcaster.user)
+  repo.value = removeSpaces(broadcaster.repo)
 }
