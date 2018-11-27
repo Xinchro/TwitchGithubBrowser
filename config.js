@@ -5,7 +5,6 @@ var repo = document.getElementById('config-repo')
 
 twitch.onAuthorized(authenticated)
 twitch.configuration.onChanged(loadData)
-console.log("loading conifg page")
 
 function authenticated(auth) {
 }
@@ -15,7 +14,6 @@ function loadData() {
 }
 
 function applyChanges() {
-  console.log("applying")
   twitch.configuration.set('broadcaster', '0.1', JSON.stringify({ user: removeSpaces(username.value), repo: removeSpaces(repo.value) }))
 }
 
@@ -24,8 +22,6 @@ document.getElementById('apply-btn').addEventListener('click', function() {
 });
 
 function updateInputs(data) {
-  console.log("updating inputs")
-  console.log(data.broadcaster)
   try {
     var broadcaster = JSON.parse(data.broadcaster.content)
   } catch(e) {
