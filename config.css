@@ -1,6 +1,116 @@
 @import 'common.css';
 
+body {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  width: 80%;
+  margin: 0 10%;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
 .wrapper {
-  background: #333;
+  width: 100%;
+  height: 100%;
   color: #eee;
+  background: #222;
+}
+
+.input-wrapper {
+  padding: 5px;
+}
+
+.input-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  width: 100%;
+}
+
+.input-element {
+  display: block;
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  font-size: 0;
+  line-height: 0;
+  border: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+}
+
+.input-element > * {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+  font-size: 24px;
+  line-height: 30px; /* parent height minus padding */
+  vertical-align: middle;
+  border: none;
+  padding: 5px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.input-element label {
+  text-transform: uppercase;
+  font-weight: 700;
+  border-right: 5px solid #bbb;
+  background: #444;
+  text-align: right;
+}
+
+.input-element input {
+  font-size: 16px;
+}
+
+.btn-wrapper {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn {
+  border: 2px solid rgba(0,0,0,0.5);
+  background: rgb(25,25,100);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eee;
+  padding: 6px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgb(40,40,120);
+  border: 2px solid rgba(0,0,0,0.4); 
+  color: #fff;
 }
