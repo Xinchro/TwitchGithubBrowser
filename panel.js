@@ -15,19 +15,20 @@ function loadData() {
 }
 
 function setVars(data) {
-  console.log(data)
   try {
     var broadcaster = JSON.parse(data.broadcaster.content)
-    console.log(broadcaster)
   } catch(e) {
     var broadcaster = { username: "error", repo: "error" }
   }
 
-  repoURL = "//github.com/"+broadcaster.user+"/"+broadcaster.repo+"/"
-  URL = "//api.github.com/repos/"+broadcaster.user+"/"+broadcaster.repo+"/contents/"
+  var user = removeSpaces(broadcaster.user)
+  var repo = removeSpaces(broadcaster.repo)
 
-  document.getElementById("user").href = "//github.com/"+broadcaster.user
-  document.getElementById("repo").href = "//github.com/"+broadcaster.user+"/"+broadcaster.repo
+  repoURL = "//github.com/"+user+"/"+repo+"/"
+  URL = "//api.github.com/repos/"+user+"/"+repo+"/contents/"
+
+  document.getElementById("user").href = "//github.com/"+user
+  document.getElementById("repo").href = "//github.com/"+user+"/"+repo
   Array.from(document.getElementsByClassName("nav-item")).forEach(function(ele) {ele.target="_blank"})
 }
 
@@ -44,7 +45,6 @@ function browseNext(event, newDir) {
   if(event) event.preventDefault()
   
   if(newDir !== '') dirs.push(newDir)
-  console.log("browsing", dirs)
   
   var xhttp = new XMLHttpRequest()
   xhttp.open("GET", URL + dirs.join('/'), false)
@@ -67,7 +67,6 @@ function browseNext(event, newDir) {
 
     if(data[i].type.toLowerCase() === 'dir') {
       browserList.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn"><div class="icon">&#x1f4c2;</div>' + data[i].name + '</button></li>'
-      console.log("getting", data[i].name + '-btn')
 
       setTimeout(function(name){
         document.getElementById(name + '-btn').addEventListener('click', function() {
