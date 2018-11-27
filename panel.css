@@ -59,7 +59,7 @@ body {
 .browser-element a,
 .browser-element button {
   height: 100%;
-  width: inherit;
+  width: 100%;
   margin: 0;
   padding: 2px 4px;
   display: block;
@@ -70,7 +70,7 @@ body {
   color: #333;
   text-align: left;
   font-size: 1rem;
-  inline-size: 100%;
+  box-sizing: border-box;
 }
 
 .browser-block > *:not(.browser-list):hover,
