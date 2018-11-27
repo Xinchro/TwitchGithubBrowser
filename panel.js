@@ -1,9 +1,5 @@
-var twitch = window.Twitch.ext;
+var twitch = window.Twitch.ext
 
-var user = "Xinchro"
-var repo = "TwitchGithubBrowser"
-var repoURL = "//github.com/"+user+"/"+repo+"/"
-var URL = "//api.github.com/repos/"+user+"/"+repo+"/contents/"
 var dirs = []
 
 twitch.onAuthorized(authenticated)
@@ -30,8 +26,8 @@ function setVars(data) {
   repoURL = "//github.com/"+broadcaster.user+"/"+broadcaster.repo+"/"
   URL = "//api.github.com/repos/"+broadcaster.user+"/"+broadcaster.repo+"/contents/"
 
-  document.getElementById("user").href = "//github.com/"+user
-  document.getElementById("repo").href = "//github.com/"+user+"/"+repo
+  document.getElementById("user").href = "//github.com/"+broadcaster.user
+  document.getElementById("repo").href = "//github.com/"+broadcaster.user+"/"+broadcaster.repo
   Array.from(document.getElementsByClassName("nav-item")).forEach(function(ele) {ele.target="_blank"})
 }
 
@@ -42,7 +38,7 @@ function goBack() {
 
 document.getElementById('goBack-btn').addEventListener('click', function() {
   goBack()
-});
+})
 
 function browseNext(event, newDir) {
   if(event) event.preventDefault()
@@ -51,8 +47,8 @@ function browseNext(event, newDir) {
   console.log("browsing", dirs)
   
   var xhttp = new XMLHttpRequest()
-  xhttp.open("GET", URL + dirs.join('/'), false);
-  xhttp.send();
+  xhttp.open("GET", URL + dirs.join('/'), false)
+  xhttp.send()
   
   try {
     var data = JSON.parse(xhttp.responseText)  
@@ -76,7 +72,7 @@ function browseNext(event, newDir) {
       setTimeout(function(name){
         document.getElementById(name + '-btn').addEventListener('click', function() {
           browseNext(event, name)
-        });
+        })
       }, 100, data[i].name)
 
     }
