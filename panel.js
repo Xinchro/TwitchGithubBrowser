@@ -12,6 +12,11 @@ function authenticated(auth) {
 function loadData() {
   setVars(twitch.configuration)
   browseNext(false, '')
+  removeElement("repo-loading")
+}
+
+function removeElement(id) {
+  document.getElementById(id).remove()
 }
 
 function setVars(data) {
