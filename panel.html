@@ -2,23 +2,22 @@
 <html>
   <head>
     <title>Github Repo Browser</title>
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <link rel="stylesheet" href="./panel.css">
   </head>
   <body>
-    <div id="app" class="full-height"></div>
-    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
-    <script src="./common.js" defer></script>
-    <script src="./panel.js" defer></script>
-    <link rel="stylesheet" href="./panel.css">
     <div class="wrapper">
       <div class="nav">
         <a id="user" class="nav-item">User</a>
         <a id="repo" class="nav-item">Repo</a>
       </div>
       <div id="browser" class="browser-block">
-        <button onclick="goBack()">Back</button>
+        <button id="goBack-btn">Back</button>
         <ul id="browser-list" class="browser-list">
         </ul>
       </div>
     </div>
+    <script src="./common.js"></script>
+    <script src="./panel.js"></script>
   </body>
 </html>

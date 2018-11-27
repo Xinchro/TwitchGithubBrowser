@@ -56,9 +56,10 @@ body {
 }
 
 .browser-block > *:not(.browser-list),
-.browser-element a {
+.browser-element a,
+.browser-element button {
   height: 100%;
-  width: inherit;
+  width: 100%;
   margin: 0;
   padding: 2px 4px;
   display: block;
@@ -71,8 +72,21 @@ body {
   font-size: 1rem;
 }
 
+.browser-block > *:not(.browser-list):hover,
+.browser-element a:hover,
+.browser-element button:hover {
+  padding-left: 15px;
+}
+
+.browser-block > *:not(.browser-list):active,
+.browser-element a:active,
+.browser-element button:active {
+  padding-left: 10px;
+}
+
 .browser-block > *:not(.browser-list):hover:before,
-.browser-element a:hover:before {
+.browser-element a:hover:before,
+.browser-element button:hover:before {
   display: block;
   height: 100%;
   width: 100%;

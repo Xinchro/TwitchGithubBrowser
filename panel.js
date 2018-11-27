@@ -40,6 +40,10 @@ function goBack() {
   browseNext(false, '')
 }
 
+document.getElementById('goBack-btn').addEventListener('click', function() {
+  goBack()
+});
+
 function browseNext(event, newDir) {
   if(event) event.preventDefault()
   
@@ -59,17 +63,22 @@ function browseNext(event, newDir) {
   }
   
   var browserList = document.getElementById('browser-list')
-  var text = ''
+  browserList.innerHTML = ''
   for(var i=0;i<data.length;i++) {
     if(data[i].type.toLowerCase() === 'file') {
-      text += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '">' + data[i].name + "</a></li>"
+      browserList.innerHTML += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '">' + data[i].name + "</a></li>"
     }
 
     if(data[i].type.toLowerCase() === 'dir') {
-      var onclick = "browseNext(event, '" + data[i].name + "')"
-      text += '<li class="browser-element"><a class="dir" onclick="' + onclick + '">&gt;&nbsp;' + data[i].name + '</a></li>'
+      browserList.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn">&gt;&nbsp;' + data[i].name + '</button></li>'
+      console.log("getting", data[i].name + '-btn')
+
+      setTimeout(function(name){
+        document.getElementById(name + '-btn').addEventListener('click', function() {
+          browseNext(event, name)
+        });
+      }, 100, data[i].name)
+
     }
   }
-  
-  browserList.innerHTML = text
 }
