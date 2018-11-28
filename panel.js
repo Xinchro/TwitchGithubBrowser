@@ -1,7 +1,5 @@
 // initial variable setup
 var dirs = []
-var repoURL = "//github.com"
-var URL = "//github.com"
 
 // DOM elements
 var browserListDOM = document.getElementById('browser-list')

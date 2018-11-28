@@ -1,5 +1,9 @@
 var twitch = window.Twitch.ext
 
+// variables
+var repoURL = "//github.com"
+var URL = "//github.com"
+
 /**
   Removes all spaces from the incoming text
   @params {String} text - string to remove all the spaces from
