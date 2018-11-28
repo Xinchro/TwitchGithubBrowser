@@ -1,5 +1,3 @@
-var twitch = window.Twitch.ext;
-
 // initial variable setup
 var username = document.getElementById('config-username')
 var repo = document.getElementById('config-repo')

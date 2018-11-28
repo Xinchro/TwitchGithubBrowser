@@ -1,5 +1,3 @@
-var twitch = window.Twitch.ext
-
 // initial variable setup
 var dirs = []
 var repoURL = "//github.com"
@@ -18,14 +16,6 @@ function loadData() {
   browseNext(false, '')
   // remove our loading element from the DM
   removeElement("repo-loading")
-}
-
-/**
-  Removes the element, who has the given ID, from the document
-  @params {String} id - the ID of the element we want to remove
-*/
-function removeElement(id) {
-  document.getElementById(id).remove()
 }
 
 /**
