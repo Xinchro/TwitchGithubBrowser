@@ -13,12 +13,25 @@ function loadData() {
   updateInputs(twitch.configuration)
 }
 
+var confirmTimeout
+
 /**
   Apply the changes to Twitch
 */
 function applyChanges() {
+  //clears the timeout
+  clearTimeout(confirmTimeout)
+
   // save broadcaster settings as unpadded values
   twitch.configuration.set('broadcaster', '0.1', JSON.stringify({ user: removeSpaces(username.value), repo: removeSpaces(repo.value) }))
+
+  // show confirmation
+  applyBtnDOM.classList.add('confirm')
+
+  // make the vanish after 500ms
+  confirmTimeout = setTimeout(function() {
+    applyBtnDOM.classList.remove('confirm')
+  }, 500) 
 }
 
 // update the various inputs on the config page with relevant data

@@ -7,17 +7,19 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>Github Repo Browser</h1>
-      <h2>A panel to display a simple directory browser for a given user and Github repository. Has links to both the repository owner and the repository itself, as well as linking off to individual files (on the master branch).</h2>
-      <h3>Please note: any spaces in these inputs will automatically be stripped.</h3>
-      <div class="input-wrapper">
+      <section class="info-wrapper panel">
+        <h1>Github Repo Browser</h1>
+        <h2>A panel to display a simple directory browser for a given user and Github repository. Has links to both the repository owner and the repository itself, as well as linking off to individual files (on the master branch).</h2>
+        <h3>Please note: any spaces in these inputs will automatically be stripped.</h3>
+      </section>
+      <div class="input-wrapper panel">
+        <div class="btn-wrapper">
+          <button id="apply-btn" class="btn" tabindex="3">apply</button>
+        </div>
         <ul class="input-list">
           <li class="input-element"><label for="config-username">Username</label><input id="config-username" type="text"  tabindex="1" /></li>
           <li class="input-element"><label for="config-repo">Repository</label><input id="config-repo" type="text" tabindex="2" /></li>
         </ul>
-        <div class="btn-wrapper">
-          <button id="apply-btn" class="btn" tabindex="3">apply</button>
-        </div>
       </div>
     </div>
     <script src="./common.js"></script>
