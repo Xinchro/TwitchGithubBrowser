@@ -5,8 +5,7 @@ var URL = "//github.com"
 
 // DOM elements
 var browserListDOM = document.getElementById('browser-list')
-var userDOM = document.getElementById("user")
-var repoDOM = document.getElementById("repo")
+var repoLinkDOM = document.getElementById("repo-link")
 var backBtnDOM = document.getElementById('goBack-btn')
 
 twitch.configuration.onChanged(loadData)
@@ -43,9 +42,11 @@ function setVars(data) {
   repoURL = "//github.com/"+user+"/"+repo+"/"
   URL = "//api.github.com/repos/"+user+"/"+repo+"/contents/"
 
-  // set our user and repo links in the DOM
-  userDOM.href = "//github.com/"+user
-  repoDOM.href = "//github.com/"+user+"/"+repo
+  // set our repo link in the DOM
+  var link = "//github.com/"+user+"/"+repo
+  repoLinkDOM.innerHTML = link
+  repoLinkDOM.href = link
+  repoLinkDOM.label = link
 }
 
 /**
