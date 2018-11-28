@@ -58,11 +58,6 @@ header a:hover {
   top: 70px;
 }
 
-.browser-block > *:not(.browser-list) {
-  background-color: #d99;
-  padding: 0;
-}
-
 .browser-block > *:not(.browser-list),
 .browser-element > * {
   width: 100%;
@@ -92,26 +87,22 @@ header a:hover {
 }
 
 .browser-block > *:not(.browser-list) .icon,
-.browser-element a .icon,
-.browser-element button .icon {
+.browser-element * .icon {
   display: none;
 }
 
 .browser-block > *:not(.browser-list):hover .icon,
-.browser-element a:hover .icon,
-.browser-element button:hover .icon {
+.browser-element *:hover .icon {
   display: inline-block;
 }
 
 .browser-block > *:not(.browser-list):hover,
-.browser-element a:hover,
-.browser-element button:hover {
+.browser-element *:hover {
   padding-left: 15px;
 }
 
 .browser-block > *:not(.browser-list):active,
-.browser-element a:active,
-.browser-element button:active {
+.browser-element *:active {
   padding-left: 10px;
 }
 
@@ -126,10 +117,14 @@ header a:hover {
   left: 0;
 }
 
-.file {;
-  background-color: #dd9;
+.file {
+  background-color: #eee;
 }
 
 .dir {
-  background-color: #9dd;
+  background-color: #cff;
+}
+
+.browser-block > *:not(.browser-list) {
+  background-color: #beb;
 }

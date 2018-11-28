@@ -96,11 +96,11 @@ function navigate() {
     // check element type and act accordingly
     if(data[i].type.toLowerCase() === 'file') {
       // add that element to the browsing list in the appropriate manner
-      browserListDOM.innerHTML += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '"><div class="icon">&#x1f517;</div>' + data[i].name + "</a></li>"
+      browserListDOM.innerHTML += '<li class="browser-element"><a class="file" target="_blank" href="' + data[i]._links.html + '"><div class="icon">&#x1f517;</div><span>' + data[i].name + '</span></a></li>'
     }
 
     if(data[i].type.toLowerCase() === 'dir') {
-      browserListDOM.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn"><div class="icon">&#x1f4c2;</div>' + data[i].name + '</button></li>'
+      browserListDOM.innerHTML += '<li class="browser-element"><button class="dir" id="' + data[i].name + '-btn"><div class="icon">&#x1f4c2;</div><span>' + data[i].name + '</span></button></li>'
 
       // timeout here becuase the DOM can't keep up with itself
       // so, bind a click after 100 milliseconds, to make sure the element is there
