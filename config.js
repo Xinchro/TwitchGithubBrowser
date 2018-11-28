@@ -1,6 +1,7 @@
-// initial variable setup
+// DOM elements
 var username = document.getElementById('config-username')
 var repo = document.getElementById('config-repo')
+var applyBtnDOM = document.getElementById('apply-btn')
 
 twitch.configuration.onChanged(loadData)
 
@@ -20,11 +21,6 @@ function applyChanges() {
   twitch.configuration.set('broadcaster', '0.1', JSON.stringify({ user: removeSpaces(username.value), repo: removeSpaces(repo.value) }))
 }
 
-// bind a click event to the apply button
-document.getElementById('apply-btn').addEventListener('click', function() {
-  applyChanges()
-});
-
 // update the various inputs on the config page with relevant data
 function updateInputs(data) {
   // try parse, set used data to "error" if failed
@@ -38,3 +34,8 @@ function updateInputs(data) {
   username.value = removeSpaces(broadcaster.user)
   repo.value = removeSpaces(broadcaster.repo)
 }
+
+// ***** bindings ***** //
+applyBtnDOM.addEventListener('click', function() {
+  applyChanges()
+});
