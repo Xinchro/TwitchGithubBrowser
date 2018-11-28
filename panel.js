@@ -2,12 +2,7 @@ var twitch = window.Twitch.ext
 
 var dirs = []
 
-twitch.onAuthorized(authenticated)
 twitch.configuration.onChanged(loadData)
-
-function authenticated(auth) {
-  
-}
 
 function loadData() {
   setVars(twitch.configuration)
