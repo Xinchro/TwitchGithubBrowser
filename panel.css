@@ -43,7 +43,7 @@ header a:hover {
 }
 
 .browser-block {
-  margin-top: 5px;
+  margin-top: 6px;
   width: 100%;
 }
 
@@ -51,18 +51,22 @@ header a:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
+  height: calc(100% - 40px - 31px);
+  position: absolute;
+  width: 100%;
+  top: 70px;
 }
 
-.browser-block > * {
+.browser-block > *:not(.browser-list) {
   background-color: #d99;
   padding: 0;
 }
 
 .browser-block > *:not(.browser-list),
-.browser-element a,
-.browser-element button {
-  height: 100%;
+.browser-element > * {
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 2px 4px;
   display: block;
@@ -76,11 +80,15 @@ header a:hover {
   box-sizing: border-box;
 }
 
-.browser-block > *:not(.browser-list):hover,
+.browser-block > *:not(.browser-list),
+.browser-element {
+  height: 30px;
+  vertical-align: middle;
+}
+
 .browser-element:hover {
   height: 50px;
-  vertical-align: middle;
-  line-height: 40px;
+  line-height: 45px;
 }
 
 .browser-block > *:not(.browser-list) .icon,
@@ -107,9 +115,7 @@ header a:hover {
   padding-left: 10px;
 }
 
-.browser-block > *:not(.browser-list):hover:before,
-.browser-element a:hover:before,
-.browser-element button:hover:before {
+.browser-element *:hover:before {
   display: block;
   height: 100%;
   width: 100%;
