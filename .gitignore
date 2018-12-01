@@ -3,3 +3,11 @@ cert.pem
 key.pem
 #bundle zips
 *.zip
+#krita files
+*.kra*
+#image assets
+*.png*
+#blender assets
+*.blend*
+#node_modules
+node_modules
