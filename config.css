@@ -106,7 +106,8 @@ h3 {
   text-align: right;
 }
 
-.input-element input {
+.input-element input,
+.input-element select {
   font-size: 16px;
 }
 

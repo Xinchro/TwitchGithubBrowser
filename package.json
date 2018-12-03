@@ -1,0 +1,28 @@
+{
+  "name": "twitch-github-browser",
+  "version": "1.1.0",
+  "description": "Lets you browse a public Github repo in a Twitch.tv panel extension",
+  "main": "panel.js",
+  "scripts": {
+    "host": "http-server -p 8080 -S -C cert.pem",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Xinchro/TwitchGithubBrowser.git"
+  },
+  "keywords": [
+    "twitch",
+    "github",
+    "extension"
+  ],
+  "author": "Xinchro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xinchro/TwitchGithubBrowser/issues"
+  },
+  "homepage": "https://github.com/Xinchro/TwitchGithubBrowser#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
