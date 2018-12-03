@@ -114,7 +114,7 @@ function updateUsername(text) {
 }
 
 /**
-  Fetches repositories for the given username
+  Fetches repositories for the given username and updates the repo select
   @params {String} user - the username
   @returns {Array} - an array of repo names
 */
@@ -126,23 +126,37 @@ function getRepos(user) {
 
   // send off a request to Github
   var xhttp = new XMLHttpRequest()
-  xhttp.open("GET", URL, false)
+  xhttp.open("GET", URL, true)
   xhttp.send()
 
-  try {
-    var data = JSON.parse(xhttp.responseText)  
-  } catch(e) {
-    console.error("failed to parse repos JSON")
-    console.error(e)
-    throw(e)
+  // act when our response is here
+  xhttp.onreadystatechange = function() {
+    // error checking
+    if(xhttp.state == 404) throw "incorrect username / repos not found"
+    if(xhttp.status == 403) throw "rate limited"
+
+    if(xhttp.status === 200) {
+      try {
+        var data = JSON.parse(xhttp.responseText)  
+      } catch(e) {
+        console.error("failed to parse repos JSON")
+        console.error(e)
+        throw(e)
+      }
+
+      // map the repo names as an array
+      var repos = data.map(function(ele) { return ele.name })
+      updateRepoSelect(repos)
+      
+      // update selection
+      repoDOM.value = getRepoIndex(repos, name) + 1 // because of default option
+
+      repoDOM.disabled = false
+    } else {
+      console.error("could not get repos")
+    }
   }
 
-  // error checking
-  if(xhttp.state == 404) throw "incorrect username / repos not found"
-  if(xhttp.status == 403) throw "rate limited"
-
-  // return just the repo names as an array
-  return data.map(function(ele) { return ele.name })
 }
 
 /**
@@ -172,14 +186,8 @@ function clearRepoSelect() {
 */
 function updateRepo(name) {
   if(name && name != '') {
-    var repos = getRepos(usernameDOM.value)
-    // get repo list
-    updateRepoSelect(repos)
-    
-    // update selection
-    repoDOM.value = getRepoIndex(repos, name) + 1 // because of default option
-
-    repoDOM.disabled = false
+    // get the repos and update the select
+    getRepos(usernameDOM.value)
   } else {
     repoDOM.value = 0
     throw "bad repo name: " + name
