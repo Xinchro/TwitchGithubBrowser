@@ -135,25 +135,28 @@ function getRepos(user) {
     if(xhttp.state == 404) throw "incorrect username / repos not found"
     if(xhttp.status == 403) throw "rate limited"
 
-    if(xhttp.status === 200) {
-      try {
-        var data = JSON.parse(xhttp.responseText)  
-      } catch(e) {
-        console.error("failed to parse repos JSON")
-        console.error(e)
-        throw(e)
+    if(xhttp.readyState == 4) {
+      if(xhttp.status === 200) {
+        try {
+          var data = JSON.parse(xhttp.responseText)
+        } catch(e) {
+          console.error("failed to parse repos JSON")
+          console.error(xhttp.response)
+          throw(e)
+        }
+
+        // map the repo names as an array
+        var repos = data.map(function(ele) { return ele.name })
+        updateRepoSelect(repos)
+        
+        // update selection
+        repoDOM.value = getRepoIndex(repos, name) + 1 // because of default option
+
+        repoDOM.disabled = false
+      } else {
+        console.error("could not get repos")
+        throw "status: " + xhttp.status
       }
-
-      // map the repo names as an array
-      var repos = data.map(function(ele) { return ele.name })
-      updateRepoSelect(repos)
-      
-      // update selection
-      repoDOM.value = getRepoIndex(repos, name) + 1 // because of default option
-
-      repoDOM.disabled = false
-    } else {
-      console.error("could not get repos")
     }
   }
 
