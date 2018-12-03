@@ -5,6 +5,7 @@
   "main": "panel.js",
   "scripts": {
     "host": "http-server -p 8080 -S -C cert.pem",
+    "zip": "7z a -tzip renameMe.zip *.html *.css *.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
