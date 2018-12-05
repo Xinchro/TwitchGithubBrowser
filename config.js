@@ -101,7 +101,7 @@ function updateInputs(data) {
   }
 
   updateUsername(removeSpaces(broadcaster.user))
-  updateRepo(removeSpaces(broadcaster.repo))
+  updateRepos(removeSpaces(broadcaster.user), removeSpaces(broadcaster.repo))
 }
 
 /**
@@ -118,7 +118,7 @@ function updateUsername(text) {
   @params {String} user - the username
   @returns {Array} - an array of repo names
 */
-function getRepos(user) {
+function updateRepos(user, repo) {
   if(!user || user === '') throw "bad user to fetch"
 
   // repo listing endpoint
@@ -150,7 +150,7 @@ function getRepos(user) {
         updateRepoSelect(repos)
         
         // update selection
-        repoDOM.value = getRepoIndex(repos, name) + 1 // because of default option
+        repoDOM.value = getRepoIndex(repos, repo) + 1 // because of default option
 
         repoDOM.disabled = false
       } else {
@@ -181,20 +181,6 @@ function clearRepoSelect() {
 
   // re-add the default option
   repoDOM.add(def)
-}
-
-/**
-  Selects the given repo
-  @params {String} name - the name of the repo to select
-*/
-function updateRepo(name) {
-  if(name && name != '') {
-    // get the repos and update the select
-    getRepos(usernameDOM.value)
-  } else {
-    repoDOM.value = 0
-    throw "bad repo name: " + name
-  }
 }
 
 /**
@@ -255,6 +241,6 @@ usernameDOM.addEventListener("input", function() {
   clearTimeout(usernameTimeout)
   usernameTimeout = setTimeout(function() {
     clearRepoSelect()
-    updateRepoSelect(getRepos(usernameDOM.value))
+    updateRepoSelect(updateRepos(usernameDOM.value))
   }, 300)
 })
